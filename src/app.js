@@ -6,6 +6,6 @@ const jsx = (
   <div>
     <Dashboard/>
   </div>
-);
+); 
 
 ReactDOM.render(jsx, document.getElementById('app'));
