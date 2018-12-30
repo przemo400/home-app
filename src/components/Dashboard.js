@@ -18,6 +18,8 @@ import { MainListItems } from './listItems';
 import SimpleLineChart from './SimpleLineChart';
 import SimpleTable from './SimpleTable';
 import DashboardTiles from './DashBoardGrid';
+import axios from 'axios';
+import { createSensorData, getSensorData } from '../data/sensor.js';
 
 const drawerWidth = 240;
 
@@ -110,7 +112,8 @@ class Dashboard extends React.Component {
     chart: true,
     table: false,
     type: '1',
-    title: "Overview"
+    title: "Overview",
+    sensorData: [],
   };
 
   handleDrawerOpen = () => {
@@ -122,16 +125,16 @@ class Dashboard extends React.Component {
   };
 
   getTitle = (type) => {
-    switch(type){
+    switch (type) {
       case '1': return titleText.overview;
       case '2': return titleText.chart;
       default: return 'Unknown';
-    } 
+    }
   };
 
   onMyClick = (source, type) => {
     source.persist();
-    this.setState({ type: type, open: false, title: this.getTitle(type)});
+    this.setState({ type: type, open: false, title: this.getTitle(type) });
     console.log(source);
     console.log(type);
   };
@@ -139,8 +142,24 @@ class Dashboard extends React.Component {
   componentDidMount() {
     try {
 
-        this.setState({title: this.getTitle(this.state.type)});
+      this.setState({ title: this.getTitle(this.state.type) });
       
+      axios.get('rpi-dht/dht?test=true').then((res) => {
+        console.log(res);
+        console.log(  createSensorData(
+              res.data.device, 
+              res.data.device,
+              res.data.temperature,
+              res.data.humidity));
+        this.setState({ sensorData : [
+          createSensorData(
+            res.data.device, 
+            res.data.device,
+            res.data.temperature,
+            res.data.humidity)]});
+      }
+
+      )
     } catch (e) {
       // Do nothing at all
     }
@@ -198,7 +217,7 @@ class Dashboard extends React.Component {
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
 
-          {this.state.type == 1 && <DashboardTiles />}
+          {this.state.type == 1 && <DashboardTiles sensorData={this.state.sensorData}/>}
 
           {this.state.type == 2 && <SimpleLineChart />}
 

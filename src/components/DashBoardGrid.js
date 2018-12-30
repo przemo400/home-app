@@ -69,11 +69,12 @@ function DashboardTiles(props) {
   const { classes } = props;
   const bull = <span className={classes.bullet}>•</span>;
   console.log(classes);
+  console.log(props);
 
   return (
     <div className={classes.root}>
       <GridList cellHeight={200} className={classes.gridList}>
-        {data.map(n => {
+        {props.sensorData.map(n => {
           return (
             <GridListTile key={n.id}>
               <Card className={classes.card}>
