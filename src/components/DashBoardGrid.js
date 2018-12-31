@@ -12,6 +12,8 @@ import GridListTile from '@material-ui/core/GridListTile';
 import { blue400 } from 'material-ui/styles/colors';
 import red from '@material-ui/core/colors/red';
 import Avatar from '@material-ui/core/Avatar';
+import RefreshIcon from '@material-ui/icons/Refresh';
+import IconButton from '@material-ui/core/IconButton';
 
 
 const styles = {
@@ -26,7 +28,7 @@ const styles = {
     flexWrap: 'wrap',
     justifyContent: 'flex-end',
     overflow: 'hidden',
-    alignItems: 'flex-end'
+    //alignItems: 'flex-end'
   },
   grid: {
     alignContent: 'flex-start'
@@ -51,6 +53,9 @@ const styles = {
   },
   avatar: {
     backgroundColor: red[500],
+  },
+  actions: {
+    display: 'flex',
   },
 };
 
@@ -82,25 +87,29 @@ function DashboardTiles(props) {
                 <CardContent>
                   <Typography className={classes.title} color="textSecondary" gutterBottom>
                     {n.name}
-        </Typography>
-                  <div className={classes.info}>
-                    <Typography className={classes.title}  gutterBottom>
-                      Temp (C)&nbsp;&nbsp;
-              </Typography>
-                    <Typography variant="h5" color='primary' component="h3">
-                      {n.temp}
                   </Typography>
+                  <div className={classes.info}>
+                    <Typography className={classes.title} gutterBottom>
+                      Temp (C)&nbsp;&nbsp;
+                    </Typography>
+                    <Typography color='primary' component="h3">
+                      {n.temp}
+                    </Typography>
                   </div>
                   <div className={classes.info}>
-                    <Typography className={classes.title}  gutterBottom>
+                    <Typography className={classes.title} gutterBottom>
                       Wilgotność (%)&nbsp;&nbsp;
                   </Typography>
-                    <Typography variant="h5" color='primary' component="h3">
+                    <Typography color='primary' component="h3">
                       {n.hum}
-                  </Typography>
+                    </Typography>
                   </div>
                 </CardContent>
-
+                <CardActions className={classes.actions} disableActionSpacing>
+                  <IconButton aria-label="Add to favorites" onClick={(evt)=>{props.onRefresh()}}>
+                    <RefreshIcon />
+                  </IconButton>
+                </CardActions>
               </Card>
             </GridListTile>
           );

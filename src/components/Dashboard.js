@@ -114,6 +114,7 @@ class Dashboard extends React.Component {
     type: '1',
     title: "Overview",
     sensorData: [],
+    busy: false,
   };
 
   handleDrawerOpen = () => {
@@ -139,11 +140,22 @@ class Dashboard extends React.Component {
     console.log(type);
   };
 
+  onRefresh = (source) => {
+    console.log('OnRefresh');
+    getSensorData().then((sensorData) => {
+      this.setState({ sensorData : sensorData})
+    });
+  };
+
   componentDidMount() {
     try {
 
       this.setState({ title: this.getTitle(this.state.type) });
       
+      getSensorData().then((sensorData) => {
+        this.setState({ sensorData : sensorData})
+      });
+/*
       axios.get('rpi-dht/dht?test=true').then((res) => {
         console.log(res);
         console.log(  createSensorData(
@@ -159,7 +171,7 @@ class Dashboard extends React.Component {
             res.data.humidity)]});
       }
 
-      )
+      )*/
     } catch (e) {
       // Do nothing at all
     }
@@ -217,7 +229,7 @@ class Dashboard extends React.Component {
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
 
-          {this.state.type == 1 && <DashboardTiles sensorData={this.state.sensorData}/>}
+          {this.state.type == 1 && <DashboardTiles onRefresh={this.onRefresh} sensorData={this.state.sensorData}/>}
 
           {this.state.type == 2 && <SimpleLineChart />}
 
