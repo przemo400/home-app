@@ -26,7 +26,7 @@ module.exports = (env) => {
     devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
     devServer: {
       proxy: {
-        '/rpi-dht' : 'http://192.168.1.201:3000'
+        '/rpi-dht' : 'http://192.168.1.238:3000'
       },
       contentBase: path.join(__dirname, 'public'),
       historyApiFallback: true,
