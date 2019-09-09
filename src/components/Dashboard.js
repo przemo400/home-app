@@ -21,6 +21,7 @@ import DashboardTiles from './DashBoardGrid';
 import axios from 'axios';
 import { createSensorData, getSensorData } from '../data/sensor.js';
 
+
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -208,11 +209,7 @@ class Dashboard extends React.Component {
             >
               {this.state.title}
             </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+        
           </Toolbar>
         </AppBar>
         <Drawer

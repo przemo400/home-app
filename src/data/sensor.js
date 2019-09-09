@@ -1,12 +1,15 @@
 
 import axios from 'axios';
 
-const createSensorData = (id, name, temp, hum) => {
+const createSensorData = (id, name, temp, hum, pm25, pm10, pressure) => {
   return {
       id,
       name,
       temp,
-      hum
+      hum,
+      pm25,
+      pm10,
+      pressure
   } 
 };
 
@@ -23,7 +26,12 @@ const getSensorData = () => {
             res.data.device, 
             res.data.device,
             res.data.sensorData.temperature,
-            res.data.sensorData.humidity)]);
+            res.data.sensorData.humidity),
+            createSensorData(
+                res.data.device, 
+                res.data.device,
+                res.data.sensorData.temperature,
+                res.data.sensorData.humidity)]);
     });
 });
 }
