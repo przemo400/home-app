@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn run dev-server
+  /usr/local/bin/node /usr/local/bin/yarn build:prod
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public
@@ -8,7 +8,7 @@ Yarn version:
   1.5.1
 
 Node version: 
-  8.9.4
+  10.16.0
 
 Platform: 
   darwin x64
@@ -27,9 +27,9 @@ npm manifest:
       "dev-server": "webpack-dev-server"
     },
     "dependencies": {
-      "@material-ui/core": "^3.7.0",
-      "@material-ui/icons": "^3.0.1",
-      "axios": "^0.18.0",
+      "@material-ui/core": "^3.9.3",
+      "@material-ui/icons": "^3.0.2",
+      "axios": "^0.18.1",
       "babel-cli": "^6.26.0",
       "babel-core": "6.25.0",
       "babel-loader": "7.1.1",
@@ -38,16 +38,16 @@ npm manifest:
       "babel-preset-env": "1.5.2",
       "babel-preset-react": "6.24.1",
       "css-loader": "0.28.4",
-      "live-server": "^1.2.0",
+      "live-server": "^1.2.1",
       "material-ui": "^0.20.2",
       "node-sass": "4.5.3",
       "normalize.css": "7.0.0",
-      "react": "^16.6.3",
-      "react-dom": "^16.6.3",
+      "react": "^16.9.0",
+      "react-dom": "^16.9.0",
       "react-modal": "^2.2.2",
       "react-redux": "5.0.5",
       "react-router-dom": "4.1.2",
-      "recharts": "^1.4.1",
+      "recharts": "^1.7.1",
       "redux": "3.7.2",
       "sass-loader": "6.0.6",
       "style-loader": "0.18.2",
@@ -5011,6 +5011,10 @@ Lockfile:
       media-typer "0.3.0"
       mime-types "~2.1.15"
   
+  typeface-roboto@0.0.54:
+    version "0.0.54"
+    resolved "https://registry.yarnpkg.com/typeface-roboto/-/typeface-roboto-0.0.54.tgz#8f02c9a18d1cfa7f49381a6ff0d21ff061f38ad2"
+  
   ua-parser-js@^0.7.18:
     version "0.7.19"
     resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.19.tgz#94151be4c0a7fb1d001af7022fdaca4642659e4b"
@@ -5375,14 +5379,13 @@ Trace:
   Error: Command failed.
   Exit code: 127
   Command: sh
-  Arguments: -c webpack-dev-server
+  Arguments: -c webpack -p --env production
   Directory: /Users/przemek/Documents/development/react/home-app
   Output:
   
       at ProcessTermError.MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
       at new ProcessTermError (/usr/local/lib/node_modules/yarn/lib/cli.js:226:113)
       at ChildProcess.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:30281:17)
-      at emitTwo (events.js:126:13)
-      at ChildProcess.emit (events.js:214:7)
-      at maybeClose (internal/child_process.js:925:16)
-      at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
+      at ChildProcess.emit (events.js:198:13)
+      at maybeClose (internal/child_process.js:982:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:259:5)
