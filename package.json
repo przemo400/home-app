@@ -31,7 +31,7 @@
     "react-modal": "^2.2.2",
     "react-redux": "5.0.5",
     "react-router-dom": "4.1.2",
-    "recharts": "^1.7.1",
+    "recharts": "^2.1.14",
     "redux": "3.7.2",
     "sass-loader": "6.0.6",
     "style-loader": "0.18.2",
